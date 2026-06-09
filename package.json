@@ -10,6 +10,7 @@
     "preview": "vite preview"
     "predeploy": "npm run build",
 "deploy": "gh-pages -d dist"
+    "homepage": "https://nikkosiete.github.io/Dashboard/"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.3",
