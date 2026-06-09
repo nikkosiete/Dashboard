@@ -1,0 +1,18 @@
+body {
+  background: #050816;
+  color: #e2f3ff;
+  font-family: "Orbitron", sans-serif;
+}
+
+.hud-panel {
+  background: rgba(13, 19, 38, 0.8);
+  border: 1px solid #00e5ff;
+  box-shadow:
+    0 0 10px rgba(0,229,255,.4),
+    inset 0 0 10px rgba(0,229,255,.1);
+}
+
+.hud-glow {
+  color: #00e5ff;
+  text-shadow: 0 0 10px #00e5ff;
+}

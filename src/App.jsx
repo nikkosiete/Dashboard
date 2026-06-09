@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Papa from "papaparse";
+import "./hud.css";
 
 const supabase = createClient(
   "https://efkpbpmcbkbcltapexvs.supabase.co",
@@ -93,23 +94,15 @@ export default function App() {
       : "0.00";
 
   return (
-    <div
-      style={{
-        padding: "30px",
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
-      <h1>Duda Weekly KPI Dashboard</h1>
+
+
+
+    
+    <div className="hud-panel rounded-xl p-6">
+      <h1 className="text-cyan-400">Duda Weekly KPI Dashboard</h1>
 
       {/* Filters */}
-      <div
-        style={{
-          display: "flex",
-          gap: "15px",
-          alignItems: "end",
-          marginBottom: "20px",
-        }}
-      >
+      <div>
         <div>
           <label>Start Date</label>
           <br />
@@ -146,11 +139,7 @@ export default function App() {
       </div>
 
       {/* CSV Upload */}
-      <div
-        style={{
-          marginBottom: "25px",
-        }}
-      >
+      <div>
         <input
           type="file"
           accept=".csv"
@@ -159,16 +148,10 @@ export default function App() {
       </div>
 
       {/* KPI Cards */}
-      <div
-        style={{
-          display: "flex",
-          gap: "20px",
-          marginBottom: "25px",
-        }}
-      >
+      <div>
         <div style={cardStyle}>
           <h3>Total Completed</h3>
-          <h1>{totalCompleted}</h1>
+          <h1 className="text-5xl font-bold hud-glow">{totalCompleted}</h1>
         </div>
 
         <div style={cardStyle}>
@@ -186,12 +169,7 @@ export default function App() {
       {loading ? (
         <h3>Loading...</h3>
       ) : (
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-          }}
-        >
+        <table>
           <thead>
             <tr>
               <th style={thStyle}>Week Start</th>
@@ -220,7 +198,7 @@ export default function App() {
 
               return (
                 <tr key={index}>
-                  <td style={tdStyle}>
+                  <td >
                     {row.week_start}
                   </td>
 
@@ -247,18 +225,10 @@ export default function App() {
       )}
 
       {/* Debug */}
-      <div style={{ marginTop: "30px" }}>
+      <div >
         <h3>Debug Data</h3>
 
-        <pre
-          style={{
-            background: "#f5f5f5",
-            padding: "15px",
-            borderRadius: "6px",
-            maxHeight: "300px",
-            overflow: "auto",
-          }}
-        >
+        <pre>
           {JSON.stringify(
             dashboard,
             null,
@@ -267,6 +237,9 @@ export default function App() {
         </pre>
       </div>
     </div>
+
+
+
   );
 }
 
