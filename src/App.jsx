@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Papa from "papaparse";
 import "./hud.css";
+import {
+  FiHome,
+  FiUpload,
+  FiBarChart2,
+  FiSettings
+} from "react-icons/fi";
 
 // Database Connection Constants
 const supabase = createClient(
@@ -136,11 +142,42 @@ export default function App() {
   const totalSla = dashboardData.reduce((acc, row) => acc + Number(row.completed_within_sla || 0), 0);
 
   return (
-    <div className="dashboard-container">
+
+<div className="app-layout">
+  <aside className="sidebar">
+    <div className="logo">
+      <h2>Duda BI</h2>
+    </div>
+
+    <nav>
+     <button className="nav-item active">
+  <FiHome />
+  Dashboard
+</button>
+
+<button className="nav-item">
+  <FiUpload />
+  Upload CSV
+</button>
+
+<button className="nav-item">
+  <FiBarChart2 />
+  Reports
+</button>
+
+<button className="nav-item">
+  <FiSettings />
+  Settings
+</button>
+    </nav>
+  </aside>
+
+  <main className="main-content">
+   <div className="dashboard-container">
       {/* Header */}
       <div className="dashboard-header">
-        <h1>Duda Production Importer</h1>
-        <p>Upload and parse standardized export CSV files to synchronize metrics with your target database schema.</p>
+         <h1>Production Dashboard</h1>
+        <p>Duda Website Production Metrics</p>
       </div>
 
       {/* Grid Controls Section */}
@@ -231,5 +268,10 @@ export default function App() {
         </table>
       </div>
     </div>
+  </main>
+</div>
+
+    
+    
   );
 }
